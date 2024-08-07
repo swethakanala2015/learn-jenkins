@@ -2,6 +2,11 @@ pipeline {
     agent {
         label 'AGENT-1'
         disableConcurrentBuilds()
+        
+    }
+     options {
+                 timeout(time: 30, unit: 'MINUTES') 
+    }
 
         parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -11,10 +16,6 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
-    }
-     options {
-                 timeout(time: 30, unit: 'MINUTES') 
-    }
 
     stages {
         stage('Build') { 
@@ -35,4 +36,6 @@ pipeline {
         }
     }
 }
+
+
 
